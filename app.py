@@ -4,7 +4,11 @@ import numpy as np
 import pandas as pd
 
 # import the model
-pipe = pickle.load(open('pipe.pkl','rb'))
+try:
+    pipe = pickle.load(open('pipe.pkl','rb'))
+    st.success("Model loaded successfully!")
+except Exception as e:
+    st.error(f"FATAL ERROR LOADING MODEL: {e}")
 df = pickle.load(open('df.pkl','rb'))
 
 st.title("Laptop Predictor")
